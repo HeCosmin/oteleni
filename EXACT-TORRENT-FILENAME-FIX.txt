@@ -1,0 +1,6 @@
+CineWave torrent/media paths
+
+Default MEDIA_ROOT: E:\\cinewave-website
+Torrent files are saved to E:\\cinewave-website\\Torrent using the detected local media basename when a matching Movie/Series file exists.
+qBittorrent media download destination is E:\\cinewave-website\\Movie or E:\\cinewave-website\\Series, selected from an existing local match or FileList category.
+Set MEDIA_ROOT in .env if you need a different root. Restart Node.js after updating.

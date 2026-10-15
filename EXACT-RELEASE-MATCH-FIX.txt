@@ -1,0 +1,9 @@
+CineWave exact release matching fix
+
+The catalogue compares release names exactly after removing only the file extension and normalizing case/whitespace. It does not discard punctuation or release tokens such as DD5.1.
+
+Expected behavior:
+Interstellar.2014.BDRip.X264.RoSubbed-playSD.mkv matches Interstellar.2014.BDRip.X264.RoSubbed-playSD.torrent.
+Interstellar.2014.BDRip.X264.RoSubbed-playSD.mkv does NOT match Interstellar.2014.BDRip.DD5.1.x264.RoSubbed-playSD.torrent.
+
+Install/update: extract into a separate backup folder first, then copy files to the CineWave project. Run npm ci and npm start. Keep your existing .env and data/db.json backed up.

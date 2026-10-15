@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "purpose": "CineWave exact release-name duplicate detection",
+  "matching": {
+    "strategy": "exact_normalized_release_name",
+    "case_sensitive": false,
+    "remove_extensions_only": [".mkv", ".mp4", ".avi", ".mov", ".wmv", ".webm", ".m4v", ".torrent", ".srt", ".vtt"],
+    "trim_whitespace": true,
+    "normalize_repeated_whitespace": true,
+    "ignore_release_tags_or_technical_tokens": false,
+    "ignore_audio_video_quality_tokens": false,
+    "compare_movie_title_or_year_only": false
+  },
+  "examples": [
+    {
+      "local_file": "Interstellar.2014.BDRip.X264.RoSubbed-playSD.mkv",
+      "candidate_torrent": "Interstellar.2014.BDRip.X264.RoSubbed-playSD.torrent",
+      "normalized_local": "Interstellar.2014.BDRip.X264.RoSubbed-playSD",
+      "normalized_torrent": "Interstellar.2014.BDRip.X264.RoSubbed-playSD",
+      "match": true,
+      "action": "show_play_and_delete_hide_download"
+    },
+    {
+      "local_file": "Interstellar.2014.BDRip.X264.RoSubbed-playSD.mkv",
+      "candidate_torrent": "Interstellar.2014.BDRip.DD5.1.x264.RoSubbed-playSD.torrent",
+      "normalized_local": "Interstellar.2014.BDRip.X264.RoSubbed-playSD",
+      "normalized_torrent": "Interstellar.2014.BDRip.DD5.1.x264.RoSubbed-playSD",
+      "match": false,
+      "reason": "DD5.1 is part of the release name and must not be ignored.",
+      "action": "keep_download_available"
+    }
+  ],
+  "ui_behavior": {
+    "exact_match_in_local_movie_or_series_folder": {"show": ["Play", "Delete"], "hide": ["Download"]},
+    "no_exact_match": {"show": ["Download"], "hide": ["Play"]},
+    "completed_queue_item_with_exact_local_file_match": "hide_queue_card",
+    "do_not_delete_files_or_torrents_automatically": true
+  }
+}
